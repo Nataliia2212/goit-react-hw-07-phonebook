@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import ContactItem from 'components/ContactItem/ContactItem';
+
 import { selectContactsList } from '../../redux/contactsSlice';
 import { selectFilter } from '../../redux/filterSlice';
 import css from './ContactsList.module.css';

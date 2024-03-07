@@ -43,10 +43,7 @@ const contactsSlice = createSlice({
 });
 
 export const contactsReducer = contactsSlice.reducer;
-// export const addNewContact = contactsSlice.actions.addNewContact;
-// export const deleteContact = contactsSlice.actions.deleteContact;
 export const { addNewContact, deleteContact, isError, fetchIsDone, isLoading } =
   contactsSlice.actions;
-
 export const { selectContactsList, selectIsError, selectIsLoading } =
   contactsSlice.selectors;

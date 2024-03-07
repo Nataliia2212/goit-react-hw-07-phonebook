@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectContactsList } from '../../redux/contactsSlice';
 
 import css from './ContactForm.module.css';
-import { addNewContactThunk, fetchData } from '../../redux/operations';
+import { addNewContactThunk } from '../../redux/operations';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
