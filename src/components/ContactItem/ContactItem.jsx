@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { deleteContact } from '../../redux/contactsSlice';
 import { deleteContactThunk } from '../../redux/operations';
 import css from './ContactItem.module.css';
 
