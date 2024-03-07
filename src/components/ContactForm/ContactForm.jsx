@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
-import { nanoid } from 'nanoid';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectContactsList } from '../../redux/contactsSlice';
 
 import css from './ContactForm.module.css';
+import { addNewContactThunk, fetchData } from '../../redux/operations';
 
-export default function ContactForm({ onFormSubmit, contacts }) {
+export default function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+  const dispatch = useDispatch();
+
+  const contactsList = useSelector(selectContactsList);
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (contacts.every(contact => contact.name !== name)) {
-      const newContact = { name, number, id: nanoid(4) };
-      onFormSubmit(newContact);
+    if (contactsList.every(contact => contact.name !== name)) {
+      const newContact = {
+        name,
+        number,
+        createdAt: new Date().toLocaleDateString(),
+      };
+      dispatch(addNewContactThunk(newContact));
       setName('');
       setNumber('');
     } else {

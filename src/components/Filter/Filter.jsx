@@ -1,12 +1,19 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { getFilterContacts } from '../../redux/selector';
+import { selectFilter } from '../../redux/filterSlice';
+import { filterContacts } from '../../redux/filterSlice';
 
 import css from './Filter.module.css';
 
-export default function Filter({ onChange }) {
-  const filter = useSelector(getFilterContacts);
+export default function Filter() {
+  const dispatch = useDispatch();
+
+  const filter = useSelector(selectFilter);
+
+  const handleChangeInput = e => {
+    dispatch(filterContacts(e.target.value));
+  };
 
   return (
     <div className={css.wrap}>
@@ -16,7 +23,7 @@ export default function Filter({ onChange }) {
         type="text"
         value={filter}
         name="filter"
-        onChange={onChange}
+        onChange={handleChangeInput}
       />
     </div>
   );
