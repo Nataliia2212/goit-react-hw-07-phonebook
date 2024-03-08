@@ -23,9 +23,11 @@ const contactsSlice = createSlice({
         state.contactsList = state.contactsList.filter(
           contact => contact.id !== payload
         );
+        state.loading = false;
       })
       .addCase(addNewContactThunk.fulfilled, (state, { payload }) => {
         state.contactsList.push(payload);
+        state.loading = false;
       })
       .addMatcher(
         isAnyOf(
